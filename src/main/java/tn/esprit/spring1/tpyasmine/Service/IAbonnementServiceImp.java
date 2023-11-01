@@ -29,14 +29,14 @@ public class IAbonnementServiceImp implements IAbonnementService{
     }
 
     @Override
-    public Abonnement findById(int id) {
-        return abonnementRepository.findById(id).orElse(null);
-//        return pisteRepository.findById(id)
-//                        .orElseThrow(() -> new IllegalArgumentException("no piste found with this id "));
+    public Abonnement findById(long numAbonnement) {
+
+        return abonnementRepository.findById(numAbonnement).orElse(null);
     }
 
     @Override
-    public void delete(int id) {
-        abonnementRepository.deleteById(id);
+    public void delete(long numAbonnement) {
+
+        abonnementRepository.deleteById(numAbonnement);
     }
 }

@@ -25,9 +25,8 @@ public class PisteController {
         return pisteService.addPiste(piste);
     }
 
-    @PutMapping("/{id}")
-    public Piste updatePiste(@PathVariable int id, @RequestBody Piste piste) {
-        piste.setId(id);
+    @PutMapping
+    public Piste updatePiste(@RequestBody Piste piste) {
         return pisteService.updatePiste(piste);
     }
 
@@ -38,15 +37,17 @@ public class PisteController {
         return pisteService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Piste findById(@PathVariable int id) {
+    @GetMapping("/{numPiste}")
+    public Piste FindById(@PathVariable long numPiste){
 
-        return pisteService.findById(id);
+        return pisteService. findById(numPiste);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
 
-        pisteService.delete(id);
+    @DeleteMapping("/{numPiste}")
+    public void delete(@RequestBody long  numPiste)    {
+
+        pisteService.delete(numPiste);
     }
+
 }

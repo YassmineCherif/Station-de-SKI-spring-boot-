@@ -7,7 +7,7 @@ public interface IAbonnementService {
     Abonnement addAbonnement(Abonnement abonnement);
     Abonnement updateAbonnement(Abonnement abonnement);
     List<Abonnement> findAll();
-    Abonnement findById(int id);
-    void delete(int id);
+    Abonnement findById (long numAbonnement);
+    void delete (long numAbonnement);
 
 }

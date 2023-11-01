@@ -7,6 +7,6 @@ public interface IPisteService {
     Piste addPiste(Piste piste);
     Piste updatePiste(Piste piste);
     List<Piste> findAll();
-    Piste findById(int id);
-    void delete(int id);
+    Piste findById (long numPiste);
+    void delete (long numPiste);
 }

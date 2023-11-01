@@ -3,6 +3,7 @@ package tn.esprit.spring1.tpyasmine.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import tn.esprit.spring1.tpyasmine.entities.enums.TypeCours;
 
 import java.util.Date;
 import java.util.Set;
@@ -16,18 +17,17 @@ import java.util.Set;
 public class Moniteur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
-    int id;
-
+    @Setter(AccessLevel.NONE) //ignorer la creation du setter pour l'id
+    long numMoniteur ;
     String nomM;
     String prenomM;
-    Date dateRecru;
+    Date dateRecu;
 
-    @OneToMany//mappedby juste pour les relation bidirectionnel
-    Set<Cours> cours;
+    @Enumerated(EnumType.STRING)
+    TypeCours typeCours;
+    @OneToMany(cascade = CascadeType.ALL)
+    Set <Cours> cours;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
 }

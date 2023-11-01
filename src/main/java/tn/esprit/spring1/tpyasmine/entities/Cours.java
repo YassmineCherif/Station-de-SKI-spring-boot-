@@ -18,28 +18,19 @@ import java.util.Set;
 public class Cours {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
-    int id;
+    @Setter(AccessLevel.NONE) //ignorer la creation du setter pour l'id
 
-    Long numCours;
+    long numCours;
     int niveau;
-    float prix;
+    float Prix;
     int creneau;
+    @Enumerated(EnumType.STRING)
+    Support support;
     @Enumerated(EnumType.STRING)
     TypeCours typeCours;
 
-    @Enumerated(EnumType.STRING)
-    Support support;
-
-    @OneToMany(mappedBy = "cours")
-    Set<Inscription> inscription;
-
-    @ManyToOne
-    Moniteur moniteur;
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    @OneToMany(mappedBy="cours")//la meme mot que dans la classe inscription
+    Set <Inscription> insecriptionSet;
 
 
 }

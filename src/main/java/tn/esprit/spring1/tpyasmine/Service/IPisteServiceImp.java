@@ -26,15 +26,14 @@ public class IPisteServiceImp implements IPisteService{
     }
 
     @Override
-    public Piste findById(int id) {
-        return pisteRepository.findById(id).orElse(null);
-//        return pisteRepository.findById(id)
-//                        .orElseThrow(() -> new IllegalArgumentException("no piste found with this id "));
+    public Piste findById(long numPiste) {
+        return pisteRepository.findById(numPiste).orElse(null);
+        //return pisteRepo.findById(numPiste)
+        // .orElseThrow(()->new IllegalArgumentException("no piste found with this id"))
     }
 
-
     @Override
-    public void delete(int id) {
-        pisteRepository.deleteById(id);
+    public void delete(long numPiste) {
+        pisteRepository.deleteById(numPiste );
     }
 }

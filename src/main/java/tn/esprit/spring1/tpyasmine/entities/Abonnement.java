@@ -17,20 +17,13 @@ import java.util.Date;
 @Entity
 public class Abonnement {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
-    int id;
-    Long numAbon;
-    Date dateDebut;
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE) //ignorer la creation du setter pour l'id
+    long numAbon;
+    Date datedebut;
     Date dateFin;
-    Float prixAbon;
+    Float PrixAbon;
+    @Enumerated(EnumType.STRING)
     TypeAbonnement typeAbonnement;
-
-    @OneToOne
-    Skieur skieur;
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
 }

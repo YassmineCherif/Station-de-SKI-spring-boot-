@@ -23,9 +23,8 @@ public class InscriptionController {
         return inscriptionService.addInscription(inscription);
     }
 
-    @PutMapping("/{id}")
-    public Inscription updateInscription(@PathVariable int id, @RequestBody Inscription inscription) {
-        inscription.setId(id);
+    @PutMapping
+    public Inscription updateInscription( @RequestBody Inscription inscription) {
         return inscriptionService.updateInscription(inscription);
     }
 
@@ -36,27 +35,33 @@ public class InscriptionController {
         return inscriptionService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Inscription findById(@PathVariable int id) {
-
-        return inscriptionService.findById(id);
+    @GetMapping("/{numInscription}")
+    public Inscription findById(@PathVariable long numInscription){
+        return inscriptionService. findById(numInscription);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
+    @DeleteMapping("/{numInscription}")
+    public void delete(@RequestBody long  numInscription)    {
 
-        inscriptionService.delete(id);
+        inscriptionService.delete(numInscription);
+    }
+
+
+
+    @PostMapping("/{numSkieur}")
+    public Inscription addRegistrationAndAssignToSkier( @RequestBody Inscription inscription,@PathVariable long numSkieur){
+        return inscriptionService.addRegistrationAndAssignToSkier(inscription,numSkieur);
+    }
+
+
+    @PostMapping("/{numInscription}/assign/{numCours}")
+    public Inscription assignRegistrationToCourse( @PathVariable Long numInscription,@PathVariable Long numCours){
+        return inscriptionService.assignRegistrationToCourse(numInscription,numCours);
     }
 
 
 
 
-    @PostMapping("/addRegistrationAndAssignToSkier/{id}")
-    public Inscription addRegistrationAndAssignToSkier(@RequestBody Inscription inscription, @PathVariable int id) { //id du skieur
-        return inscriptionService.addInscriptionAndAssignToSkier(inscription, id);
-
-
-    }
 
 
 

@@ -7,9 +7,12 @@ public interface IInscriptionService {
     Inscription addInscription(Inscription inscription);
     Inscription updateInscription(Inscription inscription);
     List<Inscription> findAll();
-    Inscription findById(int id);
-    void delete(int id);
-    Inscription addInscriptionAndAssignToSkier(Inscription inscription, int id);
+    Inscription findById(long numInscription);
+    void delete (long numInscription);
+    Inscription addRegistrationAndAssignToSkier(Inscription inscription, long numSkieur);
+
+    Inscription assignRegistrationToCourse(Long numInscription, Long numCours);
+
 
 
 }

@@ -24,9 +24,8 @@ public class MoniteurController {
         return moniteurService.addMoniteur(moniteur);
     }
 
-    @PutMapping("/{id}")
-    public Moniteur updateMoniteur(@PathVariable int id, @RequestBody Moniteur moniteur) {
-        moniteur.setId(id);
+    @PutMapping
+    public Moniteur updateMoniteur( @RequestBody Moniteur moniteur) {
         return moniteurService.updateMoniteur(moniteur);
     }
 
@@ -37,15 +36,24 @@ public class MoniteurController {
         return moniteurService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Moniteur findById(@PathVariable int id) {
+    @GetMapping("/{numMoniteur}")
+    public Moniteur findById(@PathVariable long numMoniteur){
 
-        return moniteurService.findById(id);
+        return moniteurService. findById(numMoniteur);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
 
-        moniteurService.delete(id);
+    @DeleteMapping("/{numMoniteur}")
+    public void delete(@RequestBody long  numMoniteur)    {
+
+        moniteurService.delete(numMoniteur);
     }
+
+
+    @PostMapping("/{numCourse}")
+    public Moniteur addInstructorAndAssignToCourse(Moniteur moniteur, @PathVariable long numCours){
+
+        return moniteurService.addInstructorAndAssignToCourse(moniteur,numCours);
+    }
+
 }

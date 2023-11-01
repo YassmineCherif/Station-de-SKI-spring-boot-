@@ -25,9 +25,8 @@ public class CoursController {
         return coursService.addCours(cours);
     }
 
-    @PutMapping("/{id}")
-    public Cours updateCours(@PathVariable int id, @RequestBody Cours cours) {
-        cours.setId(id);
+    @PutMapping
+    public Cours updateCours( @RequestBody Cours cours) {
         return coursService.updateCours(cours);
     }
 
@@ -38,15 +37,19 @@ public class CoursController {
         return coursService.findAll();
     }
 
-    @GetMapping("/{id}") //same name here and the name declared as a parameter
-    public Cours findById(@PathVariable int id) {
+    @GetMapping("/{numCours}") //same name here and the name declared as a parameter
+    public Cours findById(@PathVariable long numCours){
 
-        return coursService.findById(id);
+        return coursService. findById(numCours);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
 
-        coursService.delete(id);
+    @DeleteMapping("/{numCours}")
+    public void delete(@RequestBody long  numCours)    {
+
+        coursService.delete(numCours);
     }
+
+
+
 }

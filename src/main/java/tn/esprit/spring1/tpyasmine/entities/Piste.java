@@ -18,19 +18,14 @@ import java.util.Set;
 public class Piste {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
-    int id;
+    @Setter(AccessLevel.NONE) //ignorer la creation du setter pour l'id
 
-    Long numPiste;
+    long numPiste;
     String nomPiste;
     @Enumerated(EnumType.STRING)
     Couleur couleur;
-    int longeur;
-    int perte;
-    public void setId(int id) {
-        this.id = id;
-    }
-    @ManyToMany(mappedBy = "pistes")
-    Set<Skieur> skieurs;
+    @ManyToMany(mappedBy="pisteSet",cascade = CascadeType.ALL)//la meme mot que dans la classe inscription
+    Set <Skieur> SkieurSet;
+
 
 }

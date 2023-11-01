@@ -1,11 +1,10 @@
 package tn.esprit.spring1.tpyasmine.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
 import java.util.Date;
-
 import java.util.Set;
 
 @Getter
@@ -17,26 +16,19 @@ import java.util.Set;
 public class Skieur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
-    int id;
+    @Setter(AccessLevel.NONE) //ignorer la creation du setter pour l'id
+    long numSkieur;
     String nomS;
     String prenomS;
     Date dateNaissance;
-    String ville;
+    String Ville;
+    @ManyToMany(cascade = CascadeType.ALL)
+    Set<Piste> pisteSet;
+    @JsonIgnore
+    @OneToMany(mappedBy="Skieur")//la meme mot que dans la classe inscription
+    Set <Inscription> inscriptionSet;
+    @OneToOne(cascade = CascadeType.ALL)
+    Abonnement abonnement ;
 
-
-    @OneToMany(mappedBy = "skieur")
-    Set<Inscription> inscription;
-
-    @ManyToMany
-    Set<Piste>pistes;
-
-    @OneToOne(cascade=CascadeType.ALL)
-    Abonnement abonnements;
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
 }

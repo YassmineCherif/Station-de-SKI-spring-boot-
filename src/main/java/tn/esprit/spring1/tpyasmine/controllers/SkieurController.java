@@ -26,11 +26,11 @@ public class SkieurController {
         return skieurService.addSkieur(skieur);
     }
 
-    @PutMapping("/{id}")
-    public Skieur updateSkieur(@PathVariable int id, @RequestBody Skieur skieur) {
-        skieur.setId(id);
+    @PutMapping
+    public Skieur updateSkieur (@RequestBody  Skieur skieur){
         return skieurService.updateSkieur(skieur);
     }
+
 
 
     @GetMapping
@@ -39,16 +39,28 @@ public class SkieurController {
         return skieurService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Skieur getById(@PathVariable int id) {
+    @GetMapping("/{numSkieur}")
+    public Skieur getById(@PathVariable long numSkieur){
 
-        return skieurService.findById(id);
+        return skieurService. findById(numSkieur);
     }
 
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
 
-        skieurService.delete(id);
+    @DeleteMapping("/{numSkieur}")
+    public void delete(@RequestBody long  numSkieur)    {
+
+        skieurService.delete(numSkieur);
     }
+
+    @PostMapping("/{numSkieur}/pistes/{numPiste}")
+    public Skieur assignSkieurToPiste(@PathVariable Long numSkieur, @PathVariable Long numPiste) {
+            return skieurService.assignSkierToPiste(numSkieur, numPiste);
+    }
+
+    @PostMapping("/{numCourse}")
+    public Skieur addSkierAndAssignToCourse(@RequestBody Skieur skieur, @PathVariable Long numCourse) {
+        return skieurService.addSkierAndAssignToCourse(skieur, numCourse);
+    }
+
 }

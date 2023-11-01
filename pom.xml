@@ -11,12 +11,17 @@
     <groupId>tn.esprit.spring1</groupId>
     <artifactId>Tpyasmine</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>TpAsma</name>
-    <description>TpAsma</description>
+    <name>TpYasmine</name>
+    <description>TpYasmine</description>
     <properties>
         <java.version>17</java.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.0.3</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>

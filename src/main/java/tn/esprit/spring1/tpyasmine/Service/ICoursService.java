@@ -7,7 +7,7 @@ public interface ICoursService {
     Cours addCours(Cours cours);
     Cours updateCours(Cours cours);
     List<Cours> findAll();
-    Cours findById(int id);
-    void delete(int id);
+    Cours findById (long numCours);
+    void delete (long numCours);
 
 }

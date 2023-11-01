@@ -13,19 +13,15 @@ import lombok.experimental.FieldDefaults;
 public class Inscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
-    int id;
-    Long numInscription;
+    @Setter(AccessLevel.NONE) //ignorer la creation du setter pour l'id
+    long numInscription;
     int numSemaine;
 
     @ManyToOne
     Cours cours;
-    @ManyToOne
-    Skieur skieur;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    @ManyToOne
+    Skieur Skieur;
 
 }
 

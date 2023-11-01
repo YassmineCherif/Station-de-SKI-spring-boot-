@@ -8,8 +8,8 @@ public interface ISkieurService {
     Skieur addSkieur(Skieur skieur);
     Skieur updateSkieur(Skieur skieur);
     List<Skieur> findAll();
-    Skieur findById(int id);
-
-    void delete (int id);
-
+    Skieur findById (long numSkieur);
+    void delete (long numSkieur);
+     Skieur assignSkierToPiste(Long numSkieur, Long numPiste);
+    Skieur addSkierAndAssignToCourse(Skieur skieur, Long numCourse);
 }

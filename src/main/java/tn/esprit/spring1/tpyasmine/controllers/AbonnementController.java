@@ -24,9 +24,8 @@ public class AbonnementController {
         return abonnementService.addAbonnement(abonnement);
     }
 
-    @PutMapping("/{id}")
-    public Abonnement updateAbonnement(@PathVariable int id, @RequestBody Abonnement abonnement) {
-        abonnement.setId(id);
+    @PutMapping
+    public Abonnement updateAbonnement( @RequestBody Abonnement abonnement) {
         return abonnementService.updateAbonnement(abonnement);
     }
 
@@ -37,15 +36,19 @@ public class AbonnementController {
         return abonnementService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public Abonnement findById(@PathVariable int id) {
+    @GetMapping("/{numAbonnement}")
+    public Abonnement findById(@PathVariable long numAbonnement){
 
-        return abonnementService.findById(id);
+        return abonnementService. findById(numAbonnement);
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
 
-        abonnementService.delete(id);
+    @DeleteMapping("/{numCours}")
+    public void delete(@RequestBody long  numCours)    {
+
+        abonnementService.delete(numCours);
     }
+
+
+
 }

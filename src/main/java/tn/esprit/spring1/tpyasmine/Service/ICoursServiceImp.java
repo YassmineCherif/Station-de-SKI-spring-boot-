@@ -28,14 +28,14 @@ public class ICoursServiceImp implements ICoursService{
     }
 
     @Override
-    public Cours findById(int id) {
-        return coursRepository.findById(id).orElse(null);
-//        return pisteRepository.findById(id)
-//                        .orElseThrow(() -> new IllegalArgumentException("no piste found with this id "));
+    public Cours findById(long numCours) {
+
+        return coursRepository.findById(numCours).orElse(null);
     }
 
     @Override
-    public void delete(int id) {
-        coursRepository.deleteById(id);
+    public void delete(long numCours) {
+        coursRepository.deleteById(numCours);
     }
+
 }
