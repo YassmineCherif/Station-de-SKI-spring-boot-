@@ -24,7 +24,8 @@ public class Piste {
     String nomPiste;
     @Enumerated(EnumType.STRING)
     Couleur couleur;
-    @ManyToMany(mappedBy="pisteSet",cascade = CascadeType.ALL)//la meme mot que dans la classe inscription
+
+    @ManyToMany(mappedBy="pisteSet",cascade = CascadeType.ALL)
     Set <Skieur> SkieurSet;
 
 

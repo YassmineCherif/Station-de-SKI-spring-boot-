@@ -3,9 +3,12 @@ package tn.esprit.spring1.tpyasmine.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring1.tpyasmine.Service.IAbonnementService;
-import tn.esprit.spring1.tpyasmine.entities.Abonnement;
+import tn.esprit.spring1.tpyasmine.entities.*;
+import tn.esprit.spring1.tpyasmine.entities.enums.TypeAbonnement;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("abonnements")
@@ -48,6 +51,17 @@ public class AbonnementController {
 
         abonnementService.delete(numCours);
     }
+
+    @GetMapping("/{dd}/{df}")
+    public List<Abonnement> getSubscriptionsByDates(@PathVariable("dd") LocalDate datedebut, @PathVariable("df") LocalDate dateFin){
+        return abonnementService.retrieveSubscriptionsByDates(datedebut, dateFin);
+    }
+
+    @GetMapping("/type/{typeSub}")
+    public Set<Abonnement> getSubscriptionsByType(@PathVariable("typeSub")TypeAbonnement typeAbonnement){
+        return abonnementService.getSubscriptionByType(typeAbonnement);
+    }
+
 
 
 

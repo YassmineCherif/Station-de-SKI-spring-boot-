@@ -2,6 +2,8 @@ package tn.esprit.spring1.tpyasmine.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring1.tpyasmine.Repository.PisteRepository;
 import tn.esprit.spring1.tpyasmine.Repository.SkieurRepository;
@@ -12,24 +14,19 @@ import tn.esprit.spring1.tpyasmine.entities.Abonnement;
 import tn.esprit.spring1.tpyasmine.entities.Cours;
 import tn.esprit.spring1.tpyasmine.entities.Piste;
 import tn.esprit.spring1.tpyasmine.entities.Skieur;
+import tn.esprit.spring1.tpyasmine.entities.enums.TypeAbonnement;
+
 
 import java.util.List;
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ISkieurServiceImp implements ISkieurService{
 
-    @Autowired
     private SkieurRepository skieurRepository;
-
-    @Autowired
     private AbonnementRepository abonnementRepository;
-
-    @Autowired
     private InscriptionRepository inscriptionRepository;
-
-    @Autowired
     private ICoursService coursService;
-
     private final SkieurRepository skieurRepo;
     private final PisteRepository pisteRepository ;
 
@@ -65,20 +62,13 @@ public class ISkieurServiceImp implements ISkieurService{
 
     @Override
     public Skieur assignSkierToPiste(Long numSkieur, Long numPiste){
-        Skieur skieur = skieurRepo.findById(numSkieur).orElse(null);
+        Skieur skieur = skieurRepository.findById(numSkieur).orElse(null);
         Piste piste = pisteRepository.findById(numPiste).orElse(null);
-
-        // Assign the Skieur to the Piste
-        piste.getSkieurSet().add(skieur);
         skieur.getPisteSet().add(piste);
-
-        // Save both entities to update the relationship
-        pisteRepository.save(piste);
-        skieurRepo.save(skieur);
-
-        return skieur;
+        return skieurRepository.save(skieur);
 
     }
+
 
     @Override
     public Skieur addSkierAndAssignToCourse(Skieur skieur, Long numCourse) {
@@ -103,5 +93,15 @@ public class ISkieurServiceImp implements ISkieurService{
         return  skieurRepository.save(skieur);
     }
 
+    @Override
+    public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement) {
+        return skieurRepository.findBySubscription_TypeSub(typeAbonnement);
+    }
+
+    @Scheduled(fixedRate = 60000) // we must add @EnableScheduling f main
+    public void testSchedule(){
+          log.info(" test Schedule ");
+
+    }
 
 }

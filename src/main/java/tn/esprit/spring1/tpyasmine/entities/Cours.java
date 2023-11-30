@@ -19,13 +19,15 @@ public class Cours {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE) //ignorer la creation du setter pour l'id
-
+    long id;
     long numCours;
     int niveau;
     float Prix;
     int creneau;
+
     @Enumerated(EnumType.STRING)
     Support support;
+
     @Enumerated(EnumType.STRING)
     TypeCours typeCours;
 

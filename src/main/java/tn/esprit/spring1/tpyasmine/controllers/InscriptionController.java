@@ -2,10 +2,13 @@ package tn.esprit.spring1.tpyasmine.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.spring1.tpyasmine.Service.IInscriptionService;
-import tn.esprit.spring1.tpyasmine.entities.Inscription;
+import tn.esprit.spring1.tpyasmine.Service.*;
+import tn.esprit.spring1.tpyasmine.entities.*;
+import tn.esprit.spring1.tpyasmine.entities.enums.*;
+
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("inscriptions")
@@ -59,7 +62,16 @@ public class InscriptionController {
         return inscriptionService.assignRegistrationToCourse(numInscription,numCours);
     }
 
+    @PutMapping("/addAndAssignToSkierAndCourse/{numSkieur}/{numCourse}")
+    public Inscription addAndAssignToSkierAndCourse(@RequestBody Inscription inscription, @PathVariable("numSkieur") Long numSkieur,@PathVariable("numCourse") Long numCours)
+    {
+        return  inscriptionService.addRegistrationAndAssignToSkierAndCourse(inscription,numSkieur,numCours);
+    }
 
+    @GetMapping("/numWeeks/{numInstructor}/{support}")
+    public List<Integer> numWeeksCourseOfInstructorBySupport(@PathVariable("numInstructor")Long numInstructor, @PathVariable("support") Support support) {
+        return inscriptionService.numWeeksCourseOfInstructorBySupport(numInstructor,support);
+    }
 
 
 

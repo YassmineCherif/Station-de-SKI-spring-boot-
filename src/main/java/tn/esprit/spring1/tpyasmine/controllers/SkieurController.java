@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring1.tpyasmine.Service.ISkieurService;
 import tn.esprit.spring1.tpyasmine.entities.Skieur;
+import tn.esprit.spring1.tpyasmine.entities.enums.TypeAbonnement;
 
 import java.util.List;
 
@@ -61,6 +62,11 @@ public class SkieurController {
     @PostMapping("/{numCourse}")
     public Skieur addSkierAndAssignToCourse(@RequestBody Skieur skieur, @PathVariable Long numCourse) {
         return skieurService.addSkierAndAssignToCourse(skieur, numCourse);
+    }
+
+    @GetMapping("/getSkiersBySubscription")
+    public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement) {
+        return skieurService.retrieveSkiersBySubscriptionType(typeAbonnement);
     }
 
 }
