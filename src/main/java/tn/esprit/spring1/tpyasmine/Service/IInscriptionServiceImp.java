@@ -104,7 +104,7 @@ public class IInscriptionServiceImp implements IInscriptionService{
 
             case Collectif_enfant:
                 if (ageSkieur < 16) {
-                    if (inscriptionRepository.countByCourseAndNumWeek(cours, inscription.getNumSemaine()) < 6) {
+                    if (inscriptionRepository.countByCoursAndNumSemaine(cours, inscription.getNumSemaine()) < 6) {
 
                         log.info("Cours ajouté avec succes !");
                         return assignRegistration(inscription, skieur, cours);
@@ -120,7 +120,7 @@ public class IInscriptionServiceImp implements IInscriptionService{
 
             default:
                 if (ageSkieur >= 16) {
-                    if (inscriptionRepository.countByCourseAndNumWeek(cours, inscription.getNumSemaine()) < 6) {
+                    if (inscriptionRepository.countByCoursAndNumSemaine(cours, inscription.getNumSemaine()) < 6) {
                         log.info("Cours ajouté avec succes ");
                         return assignRegistration(inscription, skieur, cours);
                     } else {

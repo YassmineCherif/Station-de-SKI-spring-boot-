@@ -54,20 +54,20 @@ public class IAbonnementServiceImp implements IAbonnementService{
 
     @Override
     public List<Abonnement> retrieveSubscriptionsByDates(LocalDate startDate, LocalDate endDate) {
-        return abonnementRepository.getSubscriptionsByStartDateBetween(startDate, endDate);
+        return abonnementRepository.getSubscriptionsByDatedebutBetween(startDate, endDate);
     }
 
 
     @Override
     public Set<Abonnement> getSubscriptionByType(TypeAbonnement type) {
-        return abonnementRepository.findByTypeSubOrderByStartDateAsc(type);
+        return abonnementRepository.findByTypeSubOrderByDatedebutAsc(type);
     }
 
 
 
     public void retrieveSubscriptions() {
-        for (Abonnement sub: abonnementRepository.findDistinctOrderByEndDateAsc()) {
-            Skieur skieur = skieurRepository.findBySubscription(sub);
+        for (Abonnement sub: abonnementRepository.findDistinctOrderByDateFinAsc()) {
+            Skieur skieur = skieurRepository.findByAbonnement(sub);
             log.info(sub.getId() + " | "+ sub.getDateFin().toString()
                     + " | "+ skieur.getPrenomS() + " " + skieur.getNomS());
         }

@@ -11,8 +11,8 @@ import tn.esprit.spring1.tpyasmine.entities.enums.TypeAbonnement;
 import java.util.List;
 
 public interface SkieurRepository extends CrudRepository<Skieur, Long> {
-    Skieur findBySubscription(Abonnement abonnement);
-    List<Skieur> findBySubscription_TypeSub(TypeAbonnement typeSubscription);
+    Skieur findByAbonnement(Abonnement abonnement);
+    List<Skieur> findByAbonnement_TypeAbonnement(TypeAbonnement typeSubscription);
 
 
     List<Skieur> findByNomSAndAbonnement_TypeAbonnementAndPisteSetCouleur(String nomS, TypeAbonnement abonnement_typeAbonnement, Couleur pisteSet_couleur);

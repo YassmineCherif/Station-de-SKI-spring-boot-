@@ -11,7 +11,7 @@ import java.util.Set;
 public interface InscriptionRepository extends CrudRepository<Inscription, Long>{
 
 
-    long countByCourseAndNumWeek(Cours cours, int numWeek);
+    long countByCoursAndNumSemaine(Cours cours, int numWeek);
     @Query("select ins.numSemaine " +
             "from Inscription ins " +
             "join Moniteur mo " +

@@ -95,7 +95,7 @@ public class ISkieurServiceImp implements ISkieurService{
 
     @Override
     public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement) {
-        return skieurRepository.findBySubscription_TypeSub(typeAbonnement);
+        return skieurRepository.findByAbonnement_TypeAbonnement(typeAbonnement);
     }
 
     @Scheduled(fixedRate = 60000) // we must add @EnableScheduling f main
